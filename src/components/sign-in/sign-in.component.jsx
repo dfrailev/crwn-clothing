@@ -4,7 +4,7 @@ import FormInput from '../form-input/form-input.component';
 import CustomButton from '../custom-button/custom-button.component';
 
 import './sign-in.styles.scss';
-import { signInWithGoogle } from '../../firebase/firebase.utils';
+import { auth, signInWithGoogle } from '../../firebase/firebase.utils';
 
 class SignIn extends React.Component{
     constructor(props){
@@ -16,10 +16,18 @@ class SignIn extends React.Component{
         }    
     }
 
-    handleSubmit = event => {
-        event.preventDevault();
+    handleSubmit = async event => {
+        event.preventDefault();
 
-        this.setState({ email: '', password: ''})
+        const { email, password } = this.state;
+
+        try{
+            await auth.signInWithEmailAndPassword(email, password);
+            this.setState({ email: '', password: ''});//Clear form
+        }catch(error){
+            console.log(error);
+        }
+
     }
 
     /* Interesting: handle all inputs change with a single function */
