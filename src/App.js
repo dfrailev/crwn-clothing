@@ -52,14 +52,10 @@ class App extends React.Component {
           });
           */
 
-        });
-      
-        //}else{//else needed?
-        /* Record authenticated user on state */
-        setCurrentUser({currentUser: userAuth})
-        /* With Redux setCurrentUser is used instead */
-        //this.setState({currentUser: userAuth})
+        });      
       }
+
+      setCurrentUser(userAuth)
     });
   }
 
