@@ -35,15 +35,15 @@ class SignUp extends React.Component {
                 password
             );
 
-            createUserProfileDocument(user, { displayName });
+            await createUserProfileDocument(user, { displayName });
 
             /* Clear form */
-            this.state = {
+            this.setState({
                 displayName: '',
                 email: '',
                 password: '',
                 confirmPassword: ''    
-            }
+            });
     
         }catch(error){
             console.error(error);
