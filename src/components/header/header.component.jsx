@@ -16,8 +16,7 @@ import {
     OptionsContainer, 
     OptionLink
 } from './header.styles';
-//import './header.styles.scss';
-//TODO: delete header.styles.scss
+//deleted header.styles.scss
 
 const Header = ({ currentUser, hidden }) => (
     <HeaderContainer>
