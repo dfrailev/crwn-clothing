@@ -1,3 +1,5 @@
+//DELETE. Data retrieved from firestore
+/*
 const SHOP_DATA = {
   hats: {
       id: 1,
@@ -247,4 +249,4 @@ const SHOP_DATA = {
   };
   
   export default SHOP_DATA;
-  
+  */
