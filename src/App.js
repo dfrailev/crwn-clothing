@@ -11,12 +11,17 @@ import SignInAndSignUpPage from './pages/sign-in-and-sign-up/sign-in-and-sign-up
 import CheckoutPage from './pages/checkout/checkout.component';
 
 import Header from './components/header/header.component';
+
+import { selectCurrentUser } from './redux/user/user.selectors'
+
+/*//Not needed with Sagas
 import { auth, createUserProfileDocument
   //, addCollectionAndDocuments //To add shop.data.js to firebase
 } from './firebase/firebase.utils';
 import { setCurrentUser } from './redux/user/user.actions';
 import { selectCurrentUser } from './redux/user/user.selectors'
 //import { selectCollectionsForPreview } from './redux/shop/shop.selectors';////To add shop.data.js to firebase
+*/
 /* It works with or wihtout .jsx or .js */
 
 class App extends React.Component {
@@ -35,9 +40,9 @@ class App extends React.Component {
   unsubscribeFromAuth = null;
 
   componentDidMount(){
-    const { setCurrentUser
+    //const { setCurrentUser
       //, collectionsArray//To add shop.data.js to firebase
-     } = this.props;
+     //} = this.props;
 
     
     /* //Remove whe using sagas
@@ -106,8 +111,4 @@ const mapStateToProps = createStructuredSelector({
   //, collectionsArray: selectCollectionsForPreview //To add shop.data.js to firebase
 });
 
-const mapDispatchToProps = dispatch => ({
-  setCurrentUser: user => dispatch(setCurrentUser(user))
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(mapStateToProps)(App);
