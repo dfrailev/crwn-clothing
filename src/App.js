@@ -39,10 +39,12 @@ class App extends React.Component {
       //, collectionsArray//To add shop.data.js to firebase
      } = this.props;
 
+    
+    /* //Remove whe using sagas
     this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
       if(userAuth){
         
-        /* get authenticated user from firebase or create it when not exists */
+        //get authenticated user from firebase or create it when not exists
         const userRef = await createUserProfileDocument(userAuth);
       
         userRef.onSnapshot(snapShot => {
@@ -51,27 +53,27 @@ class App extends React.Component {
             ...snapShot.data()
           })
           
-          /* Not needed with Redux. Using setCurrentUser instead */
-          /*
-          this.setState({
-            currentUser: {
-              id: snapShot.id,
-              ...snapShot.data()
-            }
-          });
-          */
+          //Not needed with Redux. Using setCurrentUser instead 
+          
+          //this.setState({
+            //currentUser: {
+              //id: snapShot.id,
+              //...snapShot.data()
+            //}
+          //});
 
         });      
       }
 
       setCurrentUser(userAuth);
-      /* To add shop.data.js to firebase */
-      /*
-      addCollectionAndDocuments('collections', collectionsArray.map(
-        ({title, items}) => ({ title, items})
-      ));
-      */
-    });
+      //To add shop.data.js to firebase
+      
+      //addCollectionAndDocuments('collections', collectionsArray.map(
+        //({title, items}) => ({ title, items})
+      //));
+      
+    //});
+    */
   }
 
   componentWillUnmount() {
