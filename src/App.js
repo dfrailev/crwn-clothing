@@ -13,6 +13,7 @@ import CheckoutPage from './pages/checkout/checkout.component';
 import Header from './components/header/header.component';
 
 import { selectCurrentUser } from './redux/user/user.selectors'
+import { checkUserSession } from './redux/user/user.actions';
 
 /*//Not needed with Sagas
 import { auth, createUserProfileDocument
@@ -40,6 +41,11 @@ class App extends React.Component {
   unsubscribeFromAuth = null;
 
   componentDidMount(){
+
+    /* With sagas */
+    const { checkUserSession } = this.props;
+    checkUserSession();
+    
     //const { setCurrentUser
       //, collectionsArray//To add shop.data.js to firebase
      //} = this.props;
@@ -111,4 +117,9 @@ const mapStateToProps = createStructuredSelector({
   //, collectionsArray: selectCollectionsForPreview //To add shop.data.js to firebase
 });
 
-export default connect(mapStateToProps)(App);
+const mapDispatchToProps = dispatch => ({
+  checkUserSession: () => dispatch(checkUserSession())
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
+ 
