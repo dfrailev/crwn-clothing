@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
@@ -25,8 +25,12 @@ import { selectCurrentUser } from './redux/user/user.selectors'
 */
 /* It works with or wihtout .jsx or .js */
 
-class App extends React.Component {
+const App =({checkUserSession, currentUser}) => {
   
+  useEffect(()=>{
+    checkUserSession()
+  }, [checkUserSession]);
+
   /* Not needed with Redux. See dispatch at bottom */
   /*
   constructor() {
@@ -38,13 +42,13 @@ class App extends React.Component {
   }
   */
 
-  unsubscribeFromAuth = null;
+  //unsubscribeFromAuth = null;
 
-  componentDidMount(){
+  //componentDidMount(){//Not needed with hooks
 
     /* With sagas */
-    const { checkUserSession } = this.props;
-    checkUserSession();
+    //const { checkUserSession } = this.props;
+    //checkUserSession();
     
     //const { setCurrentUser
       //, collectionsArray//To add shop.data.js to firebase
@@ -85,13 +89,13 @@ class App extends React.Component {
       
     //});
     */
-  }
+  //}
 
-  componentWillUnmount() {
-    this.unsubscribeFromAuth();
-  }
+  //componentWillUnmount() {
+    //this.unsubscribeFromAuth();
+  //}
 
-  render(){
+  //render(){//Not needed with hooks
     /* Switch shows just one of options, the first matches */  
     return (
       <div>
@@ -101,7 +105,7 @@ class App extends React.Component {
           <Route path='/shop' component={ShopPage} />
           <Route exact path='/checkout' component={CheckoutPage} />
           <Route exact path='/signin' render={() => 
-            this.props.currentUser ? (
+            currentUser ? (
               <Redirect to='/' />
             ) : (
               <SignInAndSignUpPage />
@@ -110,7 +114,7 @@ class App extends React.Component {
       </div>
     );
   }
-}
+
 
 const mapStateToProps = createStructuredSelector({
   currentUser: selectCurrentUser

@@ -8,6 +8,19 @@ import { selectCollection } from '../../redux/shop/shop.selectors';
 import './collection.styles.scss';
 
 const CollectionPage = ({ collection }) => {
+    /* //Not really needed. Just a sample
+    useEffect(() => {
+        console.log('I am subscribing');
+        const unsubscribeFromCollections = firestore
+            .collection('collections')
+            .onSnapshot(snapshot => console.log(snapshot));
+
+        return () => { //Clean up function
+            console.log('I am unsubscribing');
+            unsubscribeFromCollections();
+        };
+    }, []);
+*/
     const { title, items } = collection;
     return (
         <div className='collection-page'>
